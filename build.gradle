@@ -1,0 +1,44 @@
+plugins {
+    id "java"
+    id "checkstyle"
+    id "org.springframework.boot" version "2.1.1.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE" apply true
+}
+
+group 'com.gafur.packtask'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+bootRun {
+    standardInput = System.in
+}
+
+ext {
+    lombokVersion = "1.18.4"
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot"
+
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.5.0"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.hamcrest:hamcrest-all:1.3"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion = 8.8
+    configFile = file('config/checkstyle/checkstyle.xml')
+}

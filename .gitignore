@@ -1,0 +1,13 @@
+.gradle
+package-lock.json
+/build/
+/out/
+/gradle/
+/.resourceCache/
+/node_modules/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
